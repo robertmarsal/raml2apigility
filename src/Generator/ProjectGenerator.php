@@ -37,8 +37,8 @@ final class ProjectGenerator implements GeneratorInterface
     public function generate(ApiDefinition $api): bool
     {
         // Generate the module
-        $moduleGenerator = new ModuleGenerator($this->basePath, $api);
-        $moduleGenerationOutcome = $moduleGenerator->generate();
+        $moduleGenerator = new ModuleGenerator($this->basePath);
+        $moduleGenerationOutcome = $moduleGenerator->generate($api);
 
         return $moduleGenerationOutcome;
     }
