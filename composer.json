@@ -1,0 +1,16 @@
+{
+    "name": "robertboloc/raml2apigility",
+    "description": "Apigility scaffolding generator based on a RAML specification",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Boloc",
+            "email": "robertboloc@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "league/climate": "^3.2"
+    }
+}
