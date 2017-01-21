@@ -42,6 +42,6 @@ final class ModuleGenerator implements GeneratorInterface
 
         $moduleModel->createModule($namespace, $modulePathSpec);
 
-        return false;
+        return true;
     }
 }
