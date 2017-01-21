@@ -11,6 +11,14 @@
     ],
     "require": {
         "php": "^7.0",
-        "league/climate": "^3.2"
+        "league/climate": "^3.2",
+        "alecsammon/php-raml-parser": "^2.2",
+        "zfcampus/zf-apigility-admin": "^1.5",
+        "zendframework/zend-filter": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Raml2Apigility\\": "src/"
+        }
     }
 }

@@ -21,6 +21,7 @@ if (!$autoloaderFound) {
 }
 
 use League\CLImate\CLImate;
+use Raml2Apigility\Application;
 
 $climate = new CLImate();
 $climate->description('Apigility scaffolding generator based on a RAML specification');
@@ -43,6 +44,7 @@ $climate->arguments->add([
         'noValue'     => true,
     ],
 ]);
+
 try {
     $climate->arguments->parse();
 } catch (Exception $exception) {
@@ -60,3 +62,6 @@ if (!is_file($spec)) {
 if (!is_dir($target)) {
     $climate->red('Apigility project directory does not exist!');
 }
+
+$application = new Application($spec, $target);
+$application->run();
