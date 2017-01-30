@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
+
 namespace Raml2Apigility\Generator;
 
 use Raml\ApiDefinition;
 use Zend\ModuleManager\ModuleManager;
-use ZF\Apigility\Admin\Model\ModuleModel;
+use ZF\Apigility\Admin\Model\{ModuleModel, ModulePathSpec};
 use Zend\I18n\Filter\Alpha as AlphaFilter;
-use ZF\Apigility\Admin\Model\ModulePathSpec;
 use ZF\Configuration\ModuleUtils;
 
 final class ModuleGenerator implements GeneratorInterface

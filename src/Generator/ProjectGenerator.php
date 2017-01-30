@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Raml2Apigility\Generator;
 
 use Exception;

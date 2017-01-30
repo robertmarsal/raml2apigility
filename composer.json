@@ -16,9 +16,20 @@
         "zendframework/zend-i18n": "^2.7",
         "zfcampus/zf-apigility-admin": "^1.5"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
     "autoload": {
         "psr-4": {
             "Raml2Apigility\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Raml2ApigilityTest\\": "test/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }
