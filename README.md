@@ -25,10 +25,10 @@ vendor/bin/raml2apigility [--help] [-s spec, --spec spec] [-t target, --target t
 ```
 
 ### Options
-##### spec (-s or --spec)
+##### spec (-s|--spec)
 Path to the RAML specification file
 
-##### target (-t or --target)
+##### target (-t|--target)
 Path to the Apigility project where the code should be generated into.
 
 ##### help (--spec)
