@@ -27,7 +27,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Raml2ApigilityTest\\": "test/"
+            "Raml2ApigilityTest\\Unit\\": "test/unit",
+            "Raml2ApigilityTest\\Integration\\": "test/integration"
         }
     },
     "scripts": {
