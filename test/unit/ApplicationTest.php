@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Raml2ApigilityTest;
+namespace Raml2ApigilityTest\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Raml2Apigility\Application;
