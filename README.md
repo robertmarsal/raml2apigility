@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/robertboloc/raml2apigility.svg?branch=master)](https://travis-ci.org/robertboloc/raml2apigility)
 [![License](https://poser.pugx.org/robertboloc/raml2apigility/license.png)](https://packagist.org/packages/robertboloc/raml2apigility)
 
-Apigility scaffolding generator based on a RAML specification.
+Apigility scaffolding generator based on a RAML 1.0 specification.
 
 The tool will generate the same code the Apigility Admin UI generates but from
 the command line and based on a RAML specification file.
