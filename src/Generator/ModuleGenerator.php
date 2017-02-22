@@ -10,15 +10,8 @@ use ZF\Apigility\Admin\Model\ModulePathSpec;
 use Zend\I18n\Filter\Alpha as AlphaFilter;
 use ZF\Configuration\ModuleUtils;
 
-final class ModuleGenerator implements GeneratorInterface
+final class ModuleGenerator extends AbstractGenerator
 {
-    private $basePath;
-
-    public function __construct($basePath)
-    {
-        $this->basePath = $basePath;
-    }
-
     public function generate(ApiDefinition $api): bool
     {
         $alphaFilter = new AlphaFilter();
@@ -26,7 +19,7 @@ final class ModuleGenerator implements GeneratorInterface
         $namespace = $alphaFilter->filter($api->getTitle());
 
         $moduleManager = new ModuleManager(
-            include $this->basePath . '/config/modules.config.php'
+            include $this->getBasePath() . '/config/modules.config.php'
         );
         $moduleUtils = new ModuleUtils($moduleManager);
 
@@ -39,7 +32,7 @@ final class ModuleGenerator implements GeneratorInterface
         $modulePathSpec = new ModulePathSpec(
             $moduleUtils,
             ModulePathSpec::PSR_4,
-            $this->basePath
+            $this->getBasePath()
         );
 
         $moduleModel->createModule($namespace, $modulePathSpec);

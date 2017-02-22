@@ -6,26 +6,17 @@ namespace Raml2Apigility\Generator;
 use Exception;
 use Raml\ApiDefinition;
 
-final class ProjectGenerator implements GeneratorInterface
+final class ProjectGenerator extends AbstractGenerator
 {
-    private $basePath;
-
-    public function __construct($basePath)
-    {
-        $this->basePath = $basePath;
-
-        $this->validate();
-    }
-
     /**
      * Validate that the basePath contains an Apigility Project
      *
      * @throws Exception
      */
-    private function validate()
+    public function validate()
     {
-        if (!is_dir($this->basePath . '/module') ||
-            !is_dir($this->basePath . '/config')
+        if (!is_dir($this->getBasePath() . '/module') ||
+            !is_dir($this->getBasePath() . '/config')
         ) {
             throw new Exception('The specified Apigility directory is not a valid Apigility Project!');
         }
@@ -38,9 +29,13 @@ final class ProjectGenerator implements GeneratorInterface
      */
     public function generate(ApiDefinition $api): bool
     {
-        // Generate the module
-        $moduleGenerator = new ModuleGenerator($this->basePath);
+        $this->getConsole()->yellow('Generating Apigility Project...');
+
+        $this->getConsole()->blue('Generating Modules...');
+        $moduleGenerator = new ModuleGenerator($this->getBasePath());
         $moduleGenerationOutcome = $moduleGenerator->generate($api);
+
+        $this->getConsole()->yellow('Done.');
 
         return $moduleGenerationOutcome;
     }

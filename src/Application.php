@@ -35,6 +35,7 @@ final class Application
         $api = $ramlParser->parse($this->ramlSpecificationPath);
 
         $apigilityProject = new ApigilityProjectGenerator($this->apigilityProjectPath);
+        $apigilityProject->validate();
         $apigilityProject->generate($api);
     }
 }
