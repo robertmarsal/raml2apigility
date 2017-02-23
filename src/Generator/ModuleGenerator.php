@@ -28,6 +28,7 @@ final class ModuleGenerator extends AbstractGenerator
             [],
             []
         );
+        $moduleModel->setUseShortArrayNotation(true);
 
         $modulePathSpec = new ModulePathSpec(
             $moduleUtils,
