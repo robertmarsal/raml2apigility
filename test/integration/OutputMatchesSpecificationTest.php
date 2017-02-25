@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Raml2ApigilityTest\Integration;
 
+use League\CLImate\CLImate;
 use PHPUnit\Framework\TestCase;
 use Raml2Apigility\Application;
 
@@ -10,18 +11,23 @@ final class OutputMatchesSpecificationTest extends TestCase
 {
     /**
      * @dataProvider specsDataProvider
+     *
+     * @param string $spec
+     * @param array  $expected
      */
     public function testApplicationOutputMatchesSpecification(
         string $spec,
         array $expected
     ) {
+        $consoleMock = $this->createMock(CLImate::class);
+
         $outputDirectory = sys_get_temp_dir() . '/' . uniqid(basename($spec));
 
         $this->mockApigilityProject($outputDirectory);
 
         // Run the application
         $application = new Application($spec, $outputDirectory);
-        $application->run();
+        $application->run($consoleMock);
 
         // Test the API module was created
         $this->assertDirectoryExists($outputDirectory . '/module/' . $expected['moduleName']);

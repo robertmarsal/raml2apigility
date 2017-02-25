@@ -57,10 +57,12 @@ $target = $climate->arguments->get('target');
 
 if (!is_file($spec)) {
     $climate->red('RAML specification does not exist!');
+    exit(1);
 }
 
 if (!is_dir($target)) {
     $climate->red('Apigility project directory does not exist!');
+    exit(1);
 }
 
 $application = new Application($spec, $target);

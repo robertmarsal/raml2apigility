@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Raml2Apigility;
 
+use League\CLImate\CLImate;
 use Raml\Parser as RamlParser;
 use Raml2Apigility\Generator\ProjectGenerator as ApigilityProjectGenerator;
 
@@ -28,13 +29,18 @@ final class Application
     /**
      * Parse the RAML specification and generate the Apigility scaffolding based
      * on it.
+     *
+     * @param CLIMate|null $console
      */
-    public function run()
+    public function run($console = null)
     {
         $ramlParser = new RamlParser();
         $api = $ramlParser->parse($this->ramlSpecificationPath);
 
-        $apigilityProject = new ApigilityProjectGenerator($this->apigilityProjectPath);
+        $apigilityProject = new ApigilityProjectGenerator(
+            $this->apigilityProjectPath,
+            $console
+        );
         $apigilityProject->validate();
         $apigilityProject->generate($api);
     }

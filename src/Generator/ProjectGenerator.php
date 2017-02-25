@@ -32,6 +32,7 @@ final class ProjectGenerator extends AbstractGenerator
         $this->getConsole()->yellow('Generating Apigility Project...');
 
         $this->getConsole()->blue('Generating Modules...');
+
         $moduleGenerator = new ModuleGenerator($this->getBasePath());
         $moduleGenerationOutcome = $moduleGenerator->generate($api);
 
