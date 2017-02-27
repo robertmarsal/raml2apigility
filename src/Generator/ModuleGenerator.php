@@ -12,11 +12,14 @@ use ZF\Configuration\ModuleUtils;
 
 final class ModuleGenerator extends AbstractGenerator
 {
+    protected function filterModuleName(string $name): string
+    {
+        return (new AlphaFilter())->filter($name);
+    }
+
     public function generate(ApiDefinition $api): bool
     {
-        $alphaFilter = new AlphaFilter();
-
-        $namespace = $alphaFilter->filter($api->getTitle());
+        $moduleName = $this->filterModuleName($api->getTitle());
 
         $moduleManager = new ModuleManager(
             include $this->getBasePath() . '/config/modules.config.php'
@@ -36,7 +39,7 @@ final class ModuleGenerator extends AbstractGenerator
             $this->getBasePath()
         );
 
-        $moduleModel->createModule($namespace, $modulePathSpec);
+        $moduleModel->createModule($moduleName, $modulePathSpec);
 
         return true;
     }
