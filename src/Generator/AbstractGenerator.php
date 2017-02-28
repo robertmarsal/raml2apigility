@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Raml2Apigility\Generator;
 
 use League\CLImate\CLImate;
+use Zend\I18n\Filter\Alpha as AlphaFilter;
 
 abstract class AbstractGenerator implements GeneratorInterface
 {
@@ -24,5 +25,10 @@ abstract class AbstractGenerator implements GeneratorInterface
     protected function getConsole(): CLImate
     {
         return $this->console instanceof CLImate ? $this->console : new CLImate();
+    }
+
+    protected function filterModuleName(string $name): string
+    {
+        return (new AlphaFilter())->filter($name);
     }
 }

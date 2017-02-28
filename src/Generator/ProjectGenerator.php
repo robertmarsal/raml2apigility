@@ -31,13 +31,35 @@ final class ProjectGenerator extends AbstractGenerator
     {
         $this->getConsole()->yellow('Generating Apigility Project...');
 
-        $this->getConsole()->blue('Generating Modules...');
-
-        $moduleGenerator = new ModuleGenerator($this->getBasePath());
-        $moduleGenerationOutcome = $moduleGenerator->generate($api);
+        $moduleGenerationOutcome  = $this->generateModule($api);
+        $serviceGenerationOutcome = $this->generateServices($api);
 
         $this->getConsole()->yellow('Done.');
 
-        return $moduleGenerationOutcome;
+        return $moduleGenerationOutcome && $serviceGenerationOutcome;
+    }
+
+    /**
+     * @param ApiDefinition $api
+     *
+     * @return bool
+     */
+    protected function generateModule(ApiDefinition $api): bool
+    {
+        $this->getConsole()->blue('Generating Module...');
+
+        return (new ModuleGenerator($this->getBasePath()))->generate($api);
+    }
+
+    /**
+     * @param ApiDefinition $api
+     *
+     * @return bool
+     */
+    protected function generateServices(ApiDefinition $api): bool
+    {
+        $this->getConsole()->blue('Generating Services...');
+
+        return (new ServiceGenerator($this->getBasePath()))->generate($api);
     }
 }
